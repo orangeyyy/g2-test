@@ -15,7 +15,16 @@ export default class LineChart extends Component {
       width: 500,
       height: 300
     });
-
+    this.chart.source([], {
+      label: {
+        type: 'timeCat',
+        mask: 'mm-dd',
+        alias: '时间'
+      },
+      value: {
+        alias: '数量'
+      }
+    })
     this.chart.line()
       .position("label*value");
 
@@ -23,7 +32,13 @@ export default class LineChart extends Component {
 
     setTimeout(() => {
       console.log('setData');
-      this.chart.changeData([]);
+      this.chart.changeData([{
+        label: '2017-05-19',
+        value: 100
+      }, {
+        label: '2017-05-20',
+        value: 80
+      }]);
     },  2000);
   }
 
